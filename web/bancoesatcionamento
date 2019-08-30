@@ -1,0 +1,15 @@
+create database estacionamento;
+use estacionamento;
+create table vaga(
+                     id int primary key auto_increment unique not null,
+                     nome varchar(20) unique not null ,
+                     latitude varchar(20) not null ,
+                     longitude varchar(20) not null ,
+                     disponivel char(1)
+
+);
+create table usuario(
+    id int primary key  auto_increment unique not null ,
+    email varchar(60) unique not null ,
+    senha varchar(20) not null
+);

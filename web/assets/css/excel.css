@@ -1,0 +1,13 @@
+.xlsx {
+    margin: 4px 0;
+}
+
+.xlsx:before {
+    margin-right: 10px;
+    padding: 11px 15px 12px;
+}
+
+.xlsx:before {
+    content: "";
+    background:  url(ico/ios-save.svg) no-repeat center;
+}

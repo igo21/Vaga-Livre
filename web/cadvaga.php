@@ -1,4 +1,5 @@
 <div class="main">
+    <div class="col-sm-12 col-md-12 col-xl-12">
     <h1>VAGA LIVRE</h1>
     <div class="container-center">
         <div class="main-info">
@@ -63,4 +64,7 @@
     </div>
 </div>
 <!--//main -->
+</div>
+<!--//CONTAINER -->
+
 	

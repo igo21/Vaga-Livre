@@ -31,10 +31,10 @@
                 <td>
                     <div class="form-inline">
                         <div class="col-sm-6 col-md-6 col-xl-6">
-                            <a class="text-decoration-none" href="index.php?view=cadvaga&id=<?php echo$v['id'];?>"> <button class="btn btn-primary text-center" type="button">Editar</button></a>
+                            <a class="text-decoration-none" href="index.php?view=cadvaga&id=<?php echo$v['id'];?>"> <button class="btn btn-outline-primary text-center" type="button">Editar</button></a>
                         </div>
                         <div class="col-sm-6 col-md-6 col-xl-6">
-                            <a class="text-decoration-none" href="index.php?view=controle_cad_vaga&id=<?php echo$v['id'];?>&exclui"> <button class="btn btn-danger text-center" type="button">Excluir</button></a>
+                            <a class="text-decoration-none" href="index.php?view=controle_cad_vaga&id=<?php echo$v['id'];?>&exclui"> <button class="btn btn-outline-danger text-center" type="button">Excluir</button></a>
                         </div>
                     </div>
                 </td>

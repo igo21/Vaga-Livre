@@ -47,7 +47,7 @@
 <br>
     <div class="col-sm-1 col-md-1 col-xl-1">
         <a href="index.php?view=cadvaga">
-            <button type="button" class="btn btn-danger">
+            <button type="button" class="btn btn-outline-dark">
                 Voltar
             </button>
         </a>

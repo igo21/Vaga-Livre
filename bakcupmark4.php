@@ -76,18 +76,6 @@
             text-align: center; /* Horizontally center the text (icon) */
             line-height: 20px; /* Vertically center the text (icon) */
         }
-        .markerpin2 {
-            width: 50px;
-            height: 50px;
-            border-radius: 50% 50% 50% 50%;
-            background: #9400D3;
-            position: absolute;
-            /**transform: rotate(-45deg);*/
-            left: 50%;
-            top: 50%;
-            /**margin: -15px 0 0 -15px;*/
-        }
-
     </style>
 </head>
 <body class="local">
@@ -135,73 +123,53 @@ require_once "Vaga.php";
             iconAnchor: [15, 42]
         });
         var Disponivel = L.divIcon({
-            html: "<i class='fa fa-unlock-alt'  style='font-size: 30px;color:darkgreen; '></i>",
-            iconSize: [40, 40],
+            html: '<i class="fa fa-product-hunt" style="color: blue"></i>',
+
             className: 'myDivIcon'
         });
         var Indisponivel = L.divIcon({
-            html: '<i class="fa fa-lock" style="color: red;font-size: 30px;"></i>',
-            iconSize: [40, 40],
+            html: '<i class="fa fa-product-hunt" style="color: red"></i>',
+            iconSize: [20, 20],
             className: 'myDivIcon'
         });
-        //class="fa fa-product-hunt"
+
         var marker = L.marker([coordenada[0],coordenada[1]], {
             icon: icon
         }).addTo(map);
 
-        //var littleton = L.marker([-8.801254,-63.87057]).bindPopup('This is Littleton, CO.'),
-            //denver    = L.marker([-8.801317,-63.87026]).bindPopup('This is Denver, CO.'),
-            //aurora    = L.marker([-8.801270,-63.87041]).bindPopup('This is Aurora, CO.'),
-            //golden    = L.marker([-8.801164,-63.87070]).bindPopup('This is Golden, CO.');
-        //var markerteste = L.marker([-8.801192,-63.87061]);
-        //var marcadores = L.layerGroup();
-        //var cities = L.layerGroup([littleton, denver, aurora, golden]);
-        //var cities2 = L.layerGroup([littleton, denver, aurora, golden]);
-            //cities.addTo(map);
-            //cities2.addTo(map);
-
-            //cities.addLayer(markerteste);
-            //map.removeLayer(cities);
-        //cities2.addTo(map);
-        //map.removeLayer(cities2);
-        //cities.addTo(map);
-        //var grupo =L.layerGroup();
-        //grupo.addLayer(markerteste);
-        //map.removeLayer(cities);
-        //grupo.addTo(map);
-
-        //.addLayer(polyline)
-            //.addTo(map);
+        var marker4 = new Array();
         //var marker2;
-        var grupo =L.layerGroup();
-        grupo.addTo(map);
-        //var grupo =L.layerGroup();
+
         var i =1;
         function popula_mapa() {
-            map.removeLayer(grupo);
+            //var contador=0;
+            //alert(marker4);
+            for (var j = 0; j < marker4.length; j++) {
+                map.removeLayer(marker4);
+                //marker4=[];
+                //marker4.pop();
+                //alert('removendo um');
+                //marker4=[];
+            }
             <?php
-            //$contador=0;//serve para matriz de pontos no mapa.
+            $contador=0;//serve para matriz de pontos no mapa.
             $vaga = Vaga::listarVaga();
             foreach ($vaga as $v){
             if($v['disponivel']=='s'){ ?>
 
-            var marker2 = L.marker([<?php echo $v['latitude'];?>, <?php echo $v['longitude'];?>], {
+            var marker2 = new L.marker([<?php echo $v['latitude'];?>, <?php echo $v['longitude'];?>], {
                 icon: Disponivel
             });
-            <?php
-            }else{ ?>
-            var marker2 = L.marker([<?php echo $v['latitude'];?>, <?php echo $v['longitude'];?>], {
-                icon: Indisponivel
-            });
+            marker4.push(marker2);
+            map.addLayer(marker4[<?php echo $contador?>]);
             <?php
             }
+            $contador = $contador+1;
             ?>
-            grupo.addLayer(marker2);
-            //$contador = $contador+1;
             <?php
             }
+
             ?>
-            grupo.addTo(map);
             //map.addLayer(markers4);
             //var marker = L.marker([event.location.lat, event.location.lng]);
             //map.removeLayer(marker2);
@@ -211,16 +179,10 @@ require_once "Vaga.php";
                 i=0;
             }
             i=i+1;
-
+            //console.log("Voce nao deve executar esta funcao!");
 
         }
-        popula_mapa();
-
-        function reccaer(){
-            window.location.reload();
-        }
-
-        var interval = setInterval(reccaer,4000);
+        var interval = setInterval(popula_mapa,5000);
 
 
     });
